@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import time
  
 '''
@@ -35,7 +36,7 @@ def leitura_dados(): #Leitura e criação da matriz de ligação
     return matriz_ligacao, alpha
     
 
-def scale(matriz, alpha): #1°Método
+def scale(matriz, alpha, nomeArq): #1°Método
     start_scale = time.time()
     # matrix nxn
     n = len(matriz)
@@ -84,7 +85,7 @@ def scale(matriz, alpha): #1°Método
     
     return result, (end_scale-start_scale)
     
-def limit(matriz, alpha): #2°Método
+def limit(matriz, alpha, nomeArq): #2°Método
     start_limit = time.time()
     n = len(matriz)
     
@@ -152,34 +153,36 @@ def gerar_txt(matrix, nomeArq):
     gen.close()
     return gen
 
-def main_scale(matriz_scale, alpha):
-    result_scale, tempo_execucao_scale = scale(matriz_scale, alpha)
+def main_scale(matriz_scale, alpha, nomeArq):
+    result_scale, tempo_execucao_scale = scale(matriz_scale, alpha, nomeArq)
     matriz_rank_scale = rank(result_scale)
-    gerar_txt(matriz_rank_scale, "results/scale")
+    gerar_txt(matriz_rank_scale, "results/"+nomeArq+"/scale")
     
     return result_scale, tempo_execucao_scale
     
-def main_limit(matriz_limit, alpha):
-    result_limit, tempo_execucao_limit, rep = limit(matriz_limit, alpha)
+def main_limit(matriz_limit, alpha, nomeArq):
+    result_limit, tempo_execucao_limit, rep = limit(matriz_limit, alpha, nomeArq)
     matriz_rank_limit = rank(result_limit)
-    gerar_txt(matriz_rank_limit, "results/limit")
+    gerar_txt(matriz_rank_limit, "results/"+nomeArq+"/limit")
     
     return result_limit, tempo_execucao_limit, rep
     
 def main():
+    nomeArq = input()
     matriz, alpha = leitura_dados()
     matriz_1 = [row[:] for row in matriz]
-    result_scale, tempo_execucao_scale = main_scale(matriz, alpha)
-    result_limit, tempo_execucao_limit, numero_repeticoes = main_limit(matriz_1, alpha)
+    result_scale, tempo_execucao_scale = main_scale(matriz, alpha, nomeArq)
+    result_limit, tempo_execucao_limit, numero_repeticoes = main_limit(matriz_1, alpha, nomeArq)
     
     result_diff = []
     for i in range(len(result_scale)):
         result_diff.append([i+1, abs(result_scale[i]-result_limit[i])])
-    gerar_txt(result_diff, "results/diff")
+    gerar_txt(result_diff, "results/"+nomeArq+"/diff")
     
     result_stats = [[tempo_execucao_scale],[tempo_execucao_limit],[numero_repeticoes]]
-    gerar_txt(result_stats, "results/stats")
+    gerar_txt(result_stats, "results/"+nomeArq+"/stats")
     
+    print(nomeArq)
     '''
     print("       Rank            Página         Importância")
     for i in range(0, len(rj)):
