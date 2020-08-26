@@ -32,11 +32,11 @@ def generator_cacique(nomeArq, k, alpha):
     gen.write("0 0")
     gen.close()
     
-def generator_normais(nomeArq, n_pag, alpha):
+#def generator_normais(nomeArq, n_pag, alpha):
     
 def main():
-    generator("cacique_20", 20, 0)
-    generator("cacique_40", 40, 0)
+    generator_cacique("tests/cacique_20", 20, 0.15)
+    generator_cacique("tests/cacique_40", 40, 0.15)
 
 main()
 
