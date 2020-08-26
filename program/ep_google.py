@@ -157,20 +157,20 @@ def main_scale(matriz_scale, alpha):
     matriz_rank_scale = rank(result_scale)
     gerar_txt(matriz_rank_scale, "results/scale")
     
-    return result_scale
+    return result_scale, tempo_execucao_scale
     
 def main_limit(matriz_limit, alpha):
-    result_limit = limit(matriz_limit, alpha)
+    result_limit, tempo_execucao_limit, rep = limit(matriz_limit, alpha)
     matriz_rank_limit = rank(result_limit)
     gerar_txt(matriz_rank_limit, "results/limit")
     
-    return result_limit
+    return result_limit, tempo_execucao_limit, rep
     
 def main():
     matriz, alpha = leitura_dados()
     matriz_1 = [row[:] for row in matriz]
-    result_scale = main_scale(matriz, alpha)
-    result_limit = main_limit(matriz_1, alpha)
+    result_scale, tempo_execucao_scale = main_scale(matriz, alpha)
+    result_limit, tempo_execucao_limit, numero_repeticoes = main_limit(matriz_1, alpha)
     
     result_diff = []
     for i in range(len(result_scale)):
