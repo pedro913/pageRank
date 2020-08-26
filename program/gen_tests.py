@@ -1,4 +1,4 @@
-def generator_cacique(nomeArq, k, alpha):
+def gen_cacique(nomeArq, k, alpha):
     gen = open(nomeArq, "w")
     i = 1
     n = (k*(3+k))/2
@@ -32,11 +32,14 @@ def generator_cacique(nomeArq, k, alpha):
     gen.write("0 0")
     gen.close()
     
-#def generator_normais(nomeArq, n_pag, alpha):
+def gen_random(nomeArq, n_pag, alpha):
     
 def main():
-    generator_cacique("tests/cacique_20", 20, 0.15)
-    generator_cacique("tests/cacique_40", 40, 0.15)
+    start, end = map(int, input().split())
+    alpha = float(input())
+    
+    for i in range(start, end+1, 5):
+        gen_cacique("tests/" + str(i) + "_c_" + str(alpha), i, alpha)
 
 main()
 
