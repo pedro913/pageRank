@@ -10,9 +10,6 @@ import time
                     
 2°Opcao:
 '''
-tempo_execucao_scale = 0
-tempo_execucao_limit = 0
-numero_repeticoes = 0
 
 def leitura_dados(): #Leitura e criação da matriz de ligação
     n = int(input())
@@ -85,8 +82,7 @@ def scale(matriz, alpha): #1°Método
     
     end_scale = time.time()
     
-    tempo_execucao_scale = end_scale-start_scale
-    return result
+    return result, (end_scale-start_scale)
     
 def limit(matriz, alpha): #2°Método
     start_limit = time.time()
@@ -129,10 +125,7 @@ def limit(matriz, alpha): #2°Método
         eps = new_c*sum_eps
     end_limit = time.time()
     
-    tempo_execucao_limit = end_limit-start_limit
-    numero_repeticoes = rep
-    
-    return x
+    return x, (end_limit-start_limit), rep
     
 def compare(m):
     return m[1]
@@ -160,7 +153,7 @@ def gerar_txt(matrix, nomeArq):
     return gen
 
 def main_scale(matriz_scale, alpha):
-    result_scale = scale(matriz_scale, alpha)
+    result_scale, tempo_execucao_scale = scale(matriz_scale, alpha)
     matriz_rank_scale = rank(result_scale)
     gerar_txt(matriz_rank_scale, "results/scale")
     
