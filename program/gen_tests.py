@@ -3,6 +3,7 @@ def gen_cacique(nomeArq, k, alpha):
     i = 1
     n = (k*(3+k))/2
     
+    gen.write(str(k) + "_c_" + str(alpha) + "\n")
     gen.write(str(int(n)) + "\n")
     gen.write(str(alpha) + "\n")
     
@@ -32,7 +33,7 @@ def gen_cacique(nomeArq, k, alpha):
     gen.write("0 0")
     gen.close()
     
-def gen_random(nomeArq, n_pag, alpha):
+#def gen_random(nomeArq, n_pag, alpha):
     
 def main():
     start, end = map(int, input().split())
