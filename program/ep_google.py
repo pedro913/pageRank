@@ -1,16 +1,5 @@
 #!/usr/bin/python3
 import time
- 
-'''
-1°Opcao:
-    gerar para n posições k números aleatórios entre 1 e n-1
-            Como escolher as posicoes desses números aleatórios?
-                pegar k e colocar na posição k assim por diante
-                    parece ruim tem uns contra pontos bem mee, tipo
-                    eu nao evito casos que eu tenha que pesquisar muito as coisas sem mudar muito a complexidade
-                    
-2°Opcao:
-'''
 
 def leitura_dados(): #Leitura e criação da matriz de ligação
     n = int(input())
@@ -170,16 +159,19 @@ def main_limit(matriz_limit, alpha, nomeArq):
 def main():
     nomeArq = input()
     matriz, alpha = leitura_dados()
-    matriz_1 = [row[:] for row in matriz]
-    result_scale, tempo_execucao_scale = main_scale(matriz, alpha, nomeArq)
-    result_limit, tempo_execucao_limit, numero_repeticoes = main_limit(matriz_1, alpha, nomeArq)
+    #matriz_1 = [row[:] for row in matriz]
+    #result_scale, tempo_execucao_scale = main_scale(matriz, alpha, nomeArq)
+    result_limit, tempo_execucao_limit, numero_repeticoes = main_limit(matriz, alpha, nomeArq)
     
+    '''
     result_diff = []
     for i in range(len(result_scale)):
         result_diff.append([i+1, abs(result_scale[i]-result_limit[i])])
     gerar_txt(result_diff, "results/"+nomeArq+"/diff")
+    '''
     
-    result_stats = [[tempo_execucao_scale],[tempo_execucao_limit],[numero_repeticoes]]
+    #result_stats = [[tempo_execucao_scale],[tempo_execucao_limit],[numero_repeticoes]]
+    result_stats = [[0],[tempo_execucao_limit],[numero_repeticoes]]
     gerar_txt(result_stats, "results/"+nomeArq+"/stats")
     
     print(nomeArq)

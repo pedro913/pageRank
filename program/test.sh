@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in "/home/pedro913/Desktop/pageRank/program/tests"/* 
+for i in "/home/pedro913/Desktop/pageRank/program/tests_max"/* 
 do
 	f="$i"
 	file="$(basename -- $f)"
