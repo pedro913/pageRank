@@ -15,4 +15,4 @@ Fora isso vai uma explicação rápida dos arquivos na pasta program:
    3) Também tem o programa.py, um programa em Python interativo que não gera txt e mostra os dados para o usuário, e gen.py, programa para criação de testes de redes do tipo cacique-tribo da forma como descrito na Tarefa 2 do 'projeto.pdf'.
 
 ## Arquivo programa_relatorio.zip
-Foi o arquivo enviado originalmente ao professor.
+   Foi o arquivo enviado originalmente ao professor.
